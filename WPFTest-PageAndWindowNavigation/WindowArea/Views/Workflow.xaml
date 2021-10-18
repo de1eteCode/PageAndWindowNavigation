@@ -1,0 +1,23 @@
+﻿<Window x:Class="WPFTest_PageAndWindowNavigation.WindowArea.Views.Workflow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFTest_PageAndWindowNavigation.WindowArea.Views"
+        mc:Ignorable="d"
+        Title="Workflow" Height="450" Width="800">
+
+    <DockPanel>
+        <Border BorderThickness="1" DockPanel.Dock="Left" Width=" 80">
+            <ItemsControl Margin="1" ItemsSource="{Binding Pages}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Title}" Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding }"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
+
+        <Frame NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
+    </DockPanel>
+</Window>
